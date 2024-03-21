@@ -7,20 +7,22 @@ We use qemu for development.
 
 There are a bunch of scripts described below to make life easier. 
 
-first we set up the VM with a ubuntu ISO. We download the ISO from the official ubuntu website, and use version ubuntu 20.04. 
+First we set up the VM with a ubuntu ISO. We download the ISO from the official ubuntu website, and use version ubuntu 20.04. 
 
-then run the script as follows. 
+Run the script as follows. 
 
 ```
 ./setup_qemu_iso.sh
 
 ```
 
+We download the ISO from the official ubuntu website, and use version ubuntu 20.04. 
+
 Once you are able to boot into the VM, we can set it up normally.
 
 If you are using qemu in a remote server, you need to configure grub such that it can redirect output to seriel in /etc/grub..
  
-We dont need the iso, so it can be deleted.
+We dont need the iso anymore, so it can be deleted.
 
 
 # Boot into qemu after set up 
@@ -39,6 +41,49 @@ We can ssh into the VM using
 ```
 ssh -p10022  tanyapsd@localhost
 ```
+
+# Building kernel
+
+Next we build the kernel, 
+
+```
+./build_and_copy.sh
+
+```
+
+This script builds the kernel in default config, makes it qemu ready and then proceeds to install the kernel image. 
+
+It gives 10s delay to between the build and install to kill. 
+
+It copies the kernel image into temp/. We can copy it into the VM using scp from here or viceversa 
+
+# Copy images into the VM 
+
+Make sure the VM has booted into the generic/default kernel. 
+
+From this directory, 
+
+
+```
+scp -P10022 temp/*  tanyapsd@localhost:/home/tanyapsd/
+```
+
+This will copy the files into the VM's ~
+
+Then from the VM, copy the files into /boot
+
+
+# Boot 
+
+Once the custom kernel is copied into the VM's /boot directory. 
+
+Do, 
+
+```
+sudo update-grub
+```
+
+and then grub reboot 
 
 
 ## Replicating 3PO
