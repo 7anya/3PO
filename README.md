@@ -1,5 +1,46 @@
 # 3PO
 
+
+# Set up VM 
+
+We use qemu for development. 
+
+There are a bunch of scripts described below to make life easier. 
+
+first we set up the VM with a ubuntu ISO. We download the ISO from the official ubuntu website, and use version ubuntu 20.04. 
+
+then run the script as follows. 
+
+```
+./setup_qemu_iso.sh
+
+```
+
+Once you are able to boot into the VM, we can set it up normally.
+
+If you are using qemu in a remote server, you need to configure grub such that it can redirect output to seriel in /etc/grub..
+ 
+We dont need the iso, so it can be deleted.
+
+
+# Boot into qemu after set up 
+
+Once set up is finished, we need a different qemu config boot. Use 
+
+```
+./boot_qemu.sh 
+
+```
+
+# SSH into VM 
+
+We can ssh into the VM using
+
+```
+ssh -p10022  tanyapsd@localhost
+```
+
+
 ## Replicating 3PO
 
 In this directory we will try to start implementing 3PO from the paper https://arxiv.org/pdf/2207.07688.pdf
