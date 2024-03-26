@@ -1,7 +1,7 @@
 # 3PO
 
 
-# Set up VM 
+## Set up VM 
 
 We use qemu for development. 
 
@@ -25,7 +25,7 @@ If you are using qemu in a remote server, you need to configure grub such that i
 We dont need the iso anymore, so it can be deleted.
 
 
-# Boot into qemu after set up 
+## Boot into qemu after set up 
 
 Once set up is finished, we need a different qemu config boot. Use 
 
@@ -34,7 +34,7 @@ Once set up is finished, we need a different qemu config boot. Use
 
 ```
 
-# SSH into VM 
+## SSH into VM 
 
 We can ssh into the VM using
 
@@ -42,7 +42,7 @@ We can ssh into the VM using
 ssh -p10022  tanyapsd@localhost
 ```
 
-# Building kernel
+## Building kernel
 
 Next we build the kernel, 
 
@@ -57,7 +57,7 @@ It gives 10s delay to between the build and install to kill.
 
 It copies the kernel image into temp/. We can copy it into the VM using scp from here or viceversa 
 
-# Copy images into the VM 
+## Copy images into the VM 
 
 Make sure the VM has booted into the generic/default kernel. 
 
@@ -73,7 +73,7 @@ This will copy the files into the VM's ~
 Then from the VM, copy the files into /boot
 
 
-# Boot 
+## Boot 
 
 Once the custom kernel is copied into the VM's /boot directory. 
 
@@ -85,6 +85,44 @@ sudo update-grub
 
 and then grub reboot 
 
+## Commit your changes
+
+> This was taken from Sid's Osmosis repo fot clean commits 
+
+TLDR; Commit and push individual sub-modules first, and then do the same in the parent repo.
+
+Set up this alias once. This alias will get added to your repo-local `.git/config`
+
+```bash
+git config alias.supercommit '!./supercommit.sh "$@"; #'
+```
+
+| Note: This will add and commit everything, which may be you do not want sometimes.
+
+Then to commit do:
+```bash
+git supercommit "some message"
+```
+
+```bash
+cat ./supercommit.sh
+#!/bin/bash -e
+if [ -z "$1" ]; then
+    echo "You need to provide a commit message"
+    exit
+fi
+
+git submodule foreach "
+    git add -A .
+    git update-index --refresh
+    commits=\$(git diff-index HEAD)
+    if [ ! -z \"\$commits\" ]; then
+        git commit -am \"$1\"
+    fi"
+
+git add -A .
+git commit -am "$1"
+```
 
 ## Replicating 3PO
 
