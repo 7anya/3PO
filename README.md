@@ -159,8 +159,6 @@ In this directory we will try to start implementing 3PO from the paper https://a
     return
 ```
 
-- Starting easy, we first try to use eBPF to catch the pagefault and help in tracing.
-- this way we don't have to rebuild the kernel again and again. 
 - Need to find a way to record the page fault.
 - Next we need to see how to extract the structure of Page Table Entry (PTE) of the faulted page, and how to make use of additional bits for 3PO bit and make page as present. 
 - We need to then figure out how to record trace in a file, in a format useable by the tape generator.
@@ -168,6 +166,11 @@ In this directory we will try to start implementing 3PO from the paper https://a
 - Get final trace 
 
 
+### System calls to start/stop tracing 
+
+- Created 2 system calls, three_start_tracing and three_stop_tracing
+- Used this nice tutorial to create the syscalls https://brennan.io/2016/11/14/kernel-dev-ep3/
+- We can test the syscall using the programs in Prefetching-workload/syscalls
 
 
 ## Part 2 - Generate the tape
