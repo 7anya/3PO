@@ -1,3 +1,6 @@
 [submodule "linux-stable-6.1.8"]
 	path = linux-stable-6.1.8
 	url = git@github.com:7anya/linux-stable-6.1.8.git
+[submodule "Prefetch-workload"]
+	path = Prefetch-workload
+	url = git@github.com:7anya/Prefetch-workload.git
