@@ -42,6 +42,9 @@ We can ssh into the VM using
 ssh -p10022  tanyapsd@localhost
 ```
 
+For some reason ssh works only for the generic kernel 
+
+
 ## Building kernel
 
 Next we build the kernel, 
