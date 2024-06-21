@@ -169,12 +169,11 @@ In this directory we will try to start implementing 3PO from the paper https://a
 #define _PAGE_BIT_SOFTW2	10	/* " */
 #define _PAGE_BIT_SOFTW3	11	/* " */
 ```
-Choosing to use one of these bits as 3PO bit. 
-
-
-### To Do
+Choosing to use one of these bits as 3PO bit. We chose _PAGE_BIT_SOFTW2
 
 - Next we need to see how to extract the structure of Page Table Entry (PTE) of the faulted page, and how to make use of additional bits for 3PO bit and make page as present. 
+
+### To Do
 
 - We need to then figure out how to record trace in a file, in a format useable by the tape generator.
 - Add in microset functionality. 
