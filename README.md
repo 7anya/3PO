@@ -173,25 +173,29 @@ Choosing to use one of these bits as 3PO bit. We chose _PAGE_BIT_SOFTW2
 
 - Next we need to see how to extract the structure of Page Table Entry (PTE) of the faulted page, and how to make use of additional bits for 3PO bit and make page as present. 
 
-### To Do
-
-- We need to then figure out how to record trace in a file, in a format useable by the tape generator.
-- Add in microset functionality. 
-- Get final trace 
-
-
 ### System calls to start/stop tracing 
 
 - Created 2 system calls, three_start_tracing and three_stop_tracing
 - Used this nice tutorial to create the syscalls https://brennan.io/2016/11/14/kernel-dev-ep3/
 - We can test the syscall using the programs in Prefetching-workload/syscalls
 
+### To Do
+
+- We need to then figure out how to record trace in a file, in a format useable by the tape generator.
+- Add in microset functionality. 
+- Get final trace 
 
 ## Part 2 - Generate the tape
 
-- Need to simulate eviction and 
-## Part 3 Replicate results
+- Need to simulate eviction and prefetching - DONE
+- We write a python script to perfect prefetching using the trace and LRU eviction - DONE
+- Then generate the tape, telling the order in which to prefetch pages -DONE
 
+
+## Part 3 Need to write prefetching policy according to tape, and replicate results
+
+- We must now implement prefetching in the kernel using the tape we generated. 
+- Looks like its going be non trivial effort, thus FetchBPF
 - we need to write workloads, like matrix operations etc. We should write this sooner, rather than later. 
 
 
