@@ -20,7 +20,8 @@ We download the ISO from the official ubuntu website, and use version ubuntu 20.
 
 Once you are able to boot into the VM, we can set it up normally.
 
-If you are using qemu in a remote server, you need to configure grub such that it can redirect output to seriel in /etc/grub..
+If you are using qemu in a remote server, you need to configure grub such that it can redirect output to seriel in /etc/grub.  
+Follow this guide for that: https://www.thomas-krenn.com/en/wiki/Installing_Ubuntu_20.04_via_a_serial_console  
  
 We dont need the iso anymore, so it can be deleted.
 
